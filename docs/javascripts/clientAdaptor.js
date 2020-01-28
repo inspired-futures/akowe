@@ -379,7 +379,7 @@ var ClientAdaptor = function (documentId, documentURL, urlPathPrefix, connectedC
 
         if (kotypeGlobals.conference.room.myroomjid != $(msg).attr("from"))
         {
-            $(msg).find("body").each(function()
+            $(msg).find("json").each(function()
             {
                 const action = $(this).attr("action");
                 const json = JSON.parse($(this).text());
@@ -497,7 +497,7 @@ var ClientAdaptor = function (documentId, documentURL, urlPathPrefix, connectedC
                 const text = JSON.stringify(payload);
 
                 console.debug("emit", action, text, head);
-                xmpp.send($msg({id: head, type: "groupchat", to: kotypeGlobals.conference.room.roomjid}).c("body", {xmlns: "urn:xmpp:json:0", action: action}).t(text));
+                xmpp.send($msg({id: head, type: "groupchat", to: kotypeGlobals.conference.room.roomjid}).c("body").t("").up().c("json", {xmlns: "urn:xmpp:json:0", action: action}).t(text));
                 if (callback) callback({head: head});
             }
         }

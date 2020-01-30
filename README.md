@@ -3,7 +3,7 @@
 Akọ̀wé (Yoruba word for a clerk) is a serverless version of [Kotype](https://github.com/webodf/Kotype), a web-based collaborative real-time editing server for OpenDocuments.
 Akọ̀wé uses static web pages hosted here on Github and does not require any server-side code to be installed and configured to work. 
 
-Instead, Akọ̀we uses a standard public XMPP server extended with [Colibri](https://xmpp.org/extensions/xep-0340.html) like [Jitsi-Meet](https://meet.jit.si) or [Openfire Meetings](https://github.com/igniterealtime/openfire-ofmeet-plugin) together with standard XMPP Multi-User Chat (MUC) to provide conferencing and handle route messages betweeen all collaborating editors.
+Instead, Akọ̀we uses a standard public XMPP server extended with [Colibri](https://xmpp.org/extensions/xep-0340.html) like [Jitsi-Meet](https://meet.jit.si) or [Openfire Meetings](https://github.com/igniterealtime/openfire-ofmeet-plugin) together with standard XMPP Multi-User Chat (MUC) to provide conferencing and routing of messages betweeen all collaborating editors.
 
 ## Demo
 Open two browser window/tabs instances and point them at https://inspired-futures.github.io/akowe/?audio=true
@@ -12,11 +12,9 @@ Open two browser window/tabs instances and point them at https://inspired-future
 Nothing to install!. It is is serverless. Just clone this GitHub repository and enabled GitPages for the docs folder. 
 
 ## How to use
-First edit index.js and change the default settings in kotypeGlobals
-Then open two browser window/tabs instances and point them at the github.io URL of your clone.
+First edit index.js and change the default settings in kotypeGlobals. Next, open two browser window/tabs instances and point them at the github.io URL of your clone.
 
-To make full use of Akọ̀wé, you should embed it in your own application with an <iframe> and provide the required settings with parameters in the URL.
-The full list of parameters that can be used are as follows:
+To make full use of Akọ̀wé, you should embed it in your own application with an <iframe> and provide the required settings with parameters in the URL. The full list of parameters that can be used are as follows:
 
 
 | Parameter     | Default                          | Description                                |

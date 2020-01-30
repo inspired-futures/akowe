@@ -1,9 +1,10 @@
 # Akọ̀wé
 
-Akọ̀wé (Yoruba word for a clerk) is a serverless version of [Kotype](https://github.com/webodf/Kotype), a web-based collaborative real-time editing server for OpenDocuments.
-Akọ̀wé uses static web pages hosted here on Github and does not require any server-side code to be installed and configured to work. 
+Akọ̀wé (Yoruba word for a clerk) is a serverless version of [Kotype](https://github.com/webodf/Kotype), a web-based collaborative real-time editing server for [OpenDocuments](https://en.wikipedia.org/wiki/OpenDocument) (an open, XML-based file format specification for office applications) using [XMPP](https://en.wikipedia.org/wiki/XMPP) (a communication protocol for message-oriented middleware based on XML).
 
-Instead, Akọ̀we uses a standard public XMPP server extended with [Colibri](https://xmpp.org/extensions/xep-0340.html) like [Jitsi-Meet](https://meet.jit.si) or [Openfire Meetings](https://github.com/igniterealtime/openfire-ofmeet-plugin) together with standard XMPP Multi-User Chat (MUC) to provide conferencing and routing of messages betweeen all collaborating editors.
+Akọ̀wé uses static web pages hosted here on Github or any basic web server and does not require any server-side code to be installed and configured to work. No PHP, no Java, no NodeJS, just serveless with plain HTML, CSS and JavaScript!!.
+
+Akọ̀we requires a standard public XMPP server extended with [Colibri](https://xmpp.org/extensions/xep-0340.html) like [Jitsi-Meet](https://meet.jit.si) or [Openfire Meetings](https://github.com/igniterealtime/openfire-ofmeet-plugin) together with standard XMPP Multi-User Chat (MUC) to provide audio conferencing and service the collaborative editing of text documents.
 
 <img src="https://inspired-futures.github.io/akowe/screenshot.png" />
 

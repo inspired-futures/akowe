@@ -3,7 +3,7 @@ var kotypeGlobals = {
     urlPathPrefix: ".",
     documentId: "welcome.odt",
     documentOriginalFileName: "welcome.odt",
-    documentURL: location.href.substring(0, location.href.lastIndexOf('/') + 1) + "welcome.odt",
+    documentURL: location.href.split("?")[0].substring(0, location.href.lastIndexOf('/') + 1) + "welcome.odt",
     xmppConfig: {
         hosts: {
             domain: "meet.jit.si",

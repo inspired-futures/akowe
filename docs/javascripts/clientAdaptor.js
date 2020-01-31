@@ -235,6 +235,9 @@ var OperationRouter = function (socket, odfContainer, errorCb) {
 var ClientAdaptor = function (documentId, documentURL, urlPathPrefix, connectedCb, kickedCb, disconnectedCb) {
     var memberId, opRouter, socket, callbacks = {}, messages = {}, nickColors = {}, members = {};
 
+    kotypeGlobals.localTracks = [];
+    kotypeGlobals.remoteTracks = {};
+
     this.getMemberId = function () {
         return memberId;
     };
@@ -250,9 +253,6 @@ var ClientAdaptor = function (documentId, documentURL, urlPathPrefix, connectedC
     };
 
     this.joinSession = function (cb) {
-        kotypeGlobals.localTracks = [];
-        kotypeGlobals.remoteTracks = {};
-
         if (kotypeGlobals.audio) {
             createTracks(cb)
         } else {
@@ -601,8 +601,16 @@ var ClientAdaptor = function (documentId, documentURL, urlPathPrefix, connectedC
 
         kotypeGlobals.connection.addEventListener(JitsiMeetJS.events.connection.CONNECTION_FAILED, function()
         {
-            console.error("akowe connection failed!")
-            disconnectedCb();
+            if (kotypeGlobals.xmppConfig.pwd && !kotypeGlobals.xmppConfig.authenticate)
+            {
+                kotypeGlobals.xmppConfig.authenticate = true;
+                setTimeout(init);
+            }
+            else {
+                console.debug("akowe connection failed!");
+                disconnectedCb();
+                tidyUp();
+            }
         });
 
         kotypeGlobals.connection.addEventListener(JitsiMeetJS.events.connection.CONNECTION_DISCONNECTED, function()
@@ -616,21 +624,26 @@ var ClientAdaptor = function (documentId, documentURL, urlPathPrefix, connectedC
             on: function(action, callback) {
                 console.debug("on handler activated", action);
                 callbacks[action] = callback;
+
                 if (action == "new_ops") sanitizePendingOps()
-                //if (opRouter) handleMessages(action); // process any pending messages;
             },
             emit: function(action, payload, callback) {
                 const head = getCounter();
                 const text = JSON.stringify(payload);
+                const body = kotypeGlobals.trace ? text : "";
 
                 console.debug("emit", action, text, head);
-                xmpp.send($msg({id: head, type: "groupchat", to: kotypeGlobals.conference.room.roomjid}).c("body").t("").up().c("json", {xmlns: "urn:xmpp:json:0", action: action}).t(text));
+                xmpp.send($msg({id: head, type: "groupchat", to: kotypeGlobals.conference.room.roomjid}).c("body").t(body).up().c("json", {xmlns: "urn:xmpp:json:0", action: action}).t(text));
                 if (callback) callback({head: head});
             }
         }
 
         let options = undefined;
-        if (kotypeGlobals.xmppConfig.pwd) options = {id: kotypeGlobals.user.username + "@" + kotypeGlobals.xmppConfig.domain, password: kotypeGlobals.xmppConfig.pwd}
+
+        if (kotypeGlobals.xmppConfig.authenticate && kotypeGlobals.xmppConfig.pwd)
+        {
+            options = {id: kotypeGlobals.user.username + "@" + kotypeGlobals.xmppConfig.domain, password: kotypeGlobals.xmppConfig.pwd};
+        }
         kotypeGlobals.connection.connect(options);
     }
 

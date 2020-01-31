@@ -972,7 +972,7 @@ goog.dom.removeChildren = function(node) {
  */
 goog.dom.insertSiblingBefore = function(newNode, refNode) {
   if (refNode.parentNode) {
-    refNode.parentNode.insertBefore(newNode, refNode);
+    //refNode.parentNode.insertBefore(newNode, refNode);
   }
 };
 

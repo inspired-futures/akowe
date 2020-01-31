@@ -25,14 +25,15 @@ https://inspired-futures.github.io/akowe/?audio=true&username=dele&name=Dele%20O
 
 The full list of parameters that can be used is shown below:
 
-| Parameter     | Default                          | Description                                |
-|---------------|----------------------------------|--------------------------------------------|
-| audio         | false                            | Audio Conferencing enabled                 |
-| avatar        | unknown                          | image uri for user avatar (data:xxx)       |
-| username      | unknown                          | An identifier for the user                 |
-| name          | Unknown                          | The fullname or nickname of user           |
-| docname       | welcome.odt                      | The genesis document for the collaboration |
-| docurl        | ./welcome.odt                    | The url of the document to be edited       |
-| domain        | meet.jit.si                      | XMPP domain                                |
-| bosh          | wss://meet.jit.si/xmpp-websocket | XMPP server connection url                 |
-| pwd           | undefined                        | XMPP user password for authentication      |
+| Parameter     | Default                          | Description                                                                |
+|---------------|----------------------------------|----------------------------------------------------------------------------|
+| audio         | false                            | Audio Conferencing enabled                                                 |
+| avatar        | unknown                          | image uri for user avatar (data:xxx)                                       |
+| username      | unknown                          | An identifier for the user                                                 |
+| name          | Unknown                          | The fullname or nickname of user                                           |
+| docname       | welcome.odt                      | The genesis document for the collaboration                                 |
+| docurl        | ./welcome.odt                    | The url of the document to be edited                                       |
+| domain        | meet.jit.si                      | XMPP domain                                                                |
+| bosh          | wss://meet.jit.si/xmpp-websocket | XMPP server connection url                                                 |
+| pwd           | undefined                        | XMPP user password for authentication                                      |
+| trace         | false                            | Show ops transformation data in msg body. Set true for Openfire Meetings   |

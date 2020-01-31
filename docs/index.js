@@ -1,5 +1,6 @@
 var kotypeGlobals = {
     audio: false,
+    trace: false,
     urlPathPrefix: ".",
     documentId: "welcome.odt",
     documentOriginalFileName: "welcome.odt",
@@ -40,6 +41,7 @@ window.addEventListener("load", function()
     };
 
     if (urlParam("audio")) kotypeGlobals.audio = urlParam("audio") == "true";
+    if (urlParam("trace")) kotypeGlobals.trace = urlParam("trace") == "true";
 
     if (urlParam("avatar")) kotypeGlobals.user.avatar_url = urlParam("avatar");
     if (urlParam("username")) kotypeGlobals.user.username = urlParam("username");
